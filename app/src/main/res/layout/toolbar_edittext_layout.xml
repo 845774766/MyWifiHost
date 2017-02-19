@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/toolbar_visbile_ed"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toobar_top_margin" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/toolbar_back_ed"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@mipmap/back"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+        </LinearLayout>
+        <Space
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_weight="6"
+            android:layout_gravity="center"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:background="@drawable/toobar_edit_style"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp">
+            <EditText
+                android:id="@+id/toolbar_edittext"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:singleLine="true"
+                android:maxLength="13"
+                android:background="@null"
+                android:hint="查询专业"
+                android:layout_marginLeft="10dp"
+                android:textSize="@dimen/base_text_size"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/toolbar_ed_query"
+                android:background="@drawable/query_white"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_width="22dp"
+                android:layout_height="23dp" />
+        </LinearLayout>
+        <Space
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/toolbar_end_1_ed"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,22 +1,24 @@
-package com.liang.mywifihost.wifi;
+package com.liang.mywifihost.network;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.DhcpInfo;
 import android.net.NetworkInfo;
-
-import static android.content.res.Resources.getSystem;
+import android.net.wifi.WifiManager;
+import android.util.Log;
 
 /**
  * Created by 广靓 on 2017/2/5.
  */
 
-public class WifiManager {
+public class Wifi_WifiManager {
     private Context mContext;
-    private android.net.wifi.WifiManager wifiManager;
+    private android.net.wifi.WifiManager wifiManager ;
+    public static boolean isInOpenWifi=false;
 
-    public WifiManager(Context context){
+    public Wifi_WifiManager(Context context){
         this.mContext=context;
+        wifiManager=(WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     }
 
     /**
@@ -36,6 +38,31 @@ public class WifiManager {
             }
         }
         return false;
+    }
+
+    /**
+     * 打开wifi
+     */
+    public void openWifi(){
+        if (!isWifiActive())
+            wifiManager.setWifiEnabled(true);
+    }
+
+    /**
+     * 关闭wifi
+     */
+    public void closeWifi(){
+        if (isWifiActive())
+            wifiManager.setWifiEnabled(false);
+    }
+
+    /**
+     * 记录进入软件时的wifi,
+     * 若开启，离开软件时开启wifi
+     */
+    public void InApp_isOpenWifi(){
+        if (isWifiActive())
+            isInOpenWifi = true;
     }
 
     /**

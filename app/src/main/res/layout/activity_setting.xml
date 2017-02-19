@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context="com.liang.mywifihost.activity.Setting">
+
+
+    <include layout="@layout/toolbar_layout"/>
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Switch
+                android:id="@+id/setting_close_wifi"
+                android:text="打开APP时关闭Wifi"
+                android:paddingLeft="5dp"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <TextView
+                android:background="#a7a7a7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <Switch
+                android:id="@+id/setting_prompt_mobile"
+                android:text="打开APP时提示关闭数据连接"
+                android:paddingLeft="5dp"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <TextView
+                android:background="#a7a7a7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <Switch
+                android:id="@+id/setting_record_network"
+                android:paddingLeft="5dp"
+                android:text="退出APP时，恢复进入APP时的Wifi状态"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <TextView
+                android:background="#a7a7a7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

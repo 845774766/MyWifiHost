@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item >
+
+        <!-- 定义当button 处于pressed 状态时的形态。-->
+
+        <shape>
+
+            <!--背景-->
+            <solid android:color="#ffffff"/>
+            <!--边框-->
+            <stroke android:color="#dddddd"
+                android:width="2dp"/>
+            <!--圆角-->
+            <corners android:radius="4dp"/>
+            <!--边距-->
+            <padding android:bottom="4dp"
+                android:top="2dp"
+                android:right="1dp"
+                android:left="1dp"/>
+        </shape>
+
+    </item>
+
+
+
+
+</selector>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <Switch
+        android:text="自动刷新     "
+        android:id="@+id/popu_ap_list_switch"
+        android:shadowColor="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,112 @@
+<LinearLayout
+    android:background="@color/colorAccent_translucent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/drawer_vi"
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:paddingLeft="5dp"
+            android:background="@drawable/drawer_lin_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/drawer_edit"
+                android:layout_weight="1"
+                android:hint="搜索姓名"
+                android:singleLine="true"
+                android:maxLength="4"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/drawer_btn_query"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="12dp"
+                android:background="@mipmap/query"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/drawer_btn_sync"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/sync"
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <Button
+            android:id="@+id/drawer_btn_up"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/up"
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/drawer_lin_data"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <LinearLayout
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:text="暂无提醒"
+                android:id="@+id/drawer_txt_data"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#529dff"
+                android:textSize="9dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+            <Button
+                android:id="@+id/drawer_btn_data_finish"
+                android:layout_gravity="center"
+                android:background="@mipmap/img_finish"
+                android:layout_marginRight="4dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="还没有记录迟到的人呢"
+        android:id="@+id/drawer_txt_fill_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ListView
+        android:id="@+id/drawer_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+</LinearLayout>

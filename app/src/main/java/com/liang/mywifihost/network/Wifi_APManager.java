@@ -1,8 +1,6 @@
-package com.liang.mywifihost.wifi;
+package com.liang.mywifihost.network;
 
 
-import android.app.Service;
-import android.content.ContentValues;
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
@@ -11,16 +9,20 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class WifiAPManager {
+import static android.R.attr.type;
+
+public class Wifi_APManager {
 
     private WifiManager mWifiManager;
     private Context mContext;
 
-    public WifiAPManager(Context context){
+    public Wifi_APManager(Context context){
         this.mContext=context;
         mWifiManager=(WifiManager)context.getSystemService(Context.WIFI_SERVICE);
     }
@@ -30,8 +32,9 @@ public class WifiAPManager {
      * 创建热点
      * @param mSSID 热点名称
      * @param mPasswd 热点密码
+     * @param isOpen 是否是开放热点
      */
-    public void startWifiAp(String mSSID,String mPasswd){
+    public void startWifiAp(String mSSID,String mPasswd,boolean isOpen){
        Method method1=null;
        try {
            method1=mWifiManager.getClass().getMethod("setWifiApEnabled",
@@ -43,7 +46,11 @@ public class WifiAPManager {
            netConfig.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
            netConfig.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
            netConfig.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
-           netConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+           if (isOpen) {
+               netConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+           }else {
+               netConfig.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+           }
            netConfig.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
            netConfig.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
            netConfig.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
@@ -58,6 +65,34 @@ public class WifiAPManager {
            e.printStackTrace();
        }
     }
+
+    /**获取热点名**/
+    public String getApSSID() {
+        try {
+            Method localMethod = this.mWifiManager.getClass().getDeclaredMethod("getWifiApConfiguration", new Class[0]);
+            if (localMethod == null) return null;
+            Object localObject1 = localMethod.invoke(this.mWifiManager,new Object[0]);
+            if (localObject1 == null) return null;
+            WifiConfiguration localWifiConfiguration = (WifiConfiguration) localObject1;
+            if (localWifiConfiguration.SSID != null) return localWifiConfiguration.SSID;
+            Field localField1 = WifiConfiguration.class .getDeclaredField("mWifiApProfile");
+            if (localField1 == null) return null;
+            localField1.setAccessible(true);
+            Object localObject2 = localField1.get(localWifiConfiguration);
+            localField1.setAccessible(false);
+            if (localObject2 == null)  return null;
+            Field localField2 = localObject2.getClass().getDeclaredField("SSID");
+            localField2.setAccessible(true);
+            Object localObject3 = localField2.get(localObject2);
+            if (localObject3 == null) return null;
+            localField2.setAccessible(false);
+            String str = (String) localObject3;
+            return str;
+        } catch (Exception localException) {
+        }
+        return null;
+    }
+
 
     /**
      * 检查是否开启Wifi热点
@@ -105,7 +140,7 @@ public class WifiAPManager {
      * @return 其他手机IP 数组列表
      */
     public ArrayList<String> getConnectedIP(){
-        ArrayList<String> connectedIp=new ArrayList<>();
+        ArrayList<String> connectedIp=new ArrayList<String>();
         try {
             BufferedReader br=new BufferedReader(new FileReader(
                     "/proc/net/arp"));
@@ -124,6 +159,8 @@ public class WifiAPManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         return connectedIp;
     }
+
 }
