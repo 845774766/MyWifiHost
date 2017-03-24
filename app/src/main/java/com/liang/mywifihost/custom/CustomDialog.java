@@ -4,10 +4,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 import com.liang.mywifihost.R;
 
 import static android.R.attr.name;
+import static android.R.attr.visible;
 
 
 public class CustomDialog extends Dialog {
@@ -94,6 +98,7 @@ public class CustomDialog extends Dialog {
 
 		public Builder showEditTextIp(int visible){
 			((EditText)layout.findViewById(R.id.dialog_edit_ip)).setVisibility(visible);
+			((CheckBox)layout.findViewById(R.id.dialog_checkbox)).setVisibility(visible);
 			return this;
 		}
 
@@ -151,6 +156,10 @@ public class CustomDialog extends Dialog {
 			return this;
 		}
 
+		public CheckBox getCheckBoxBmobIsChecked(){
+			Log.i("haha","dialog checkbox 执行");
+			return ((CheckBox)layout.findViewById(R.id.dialog_checkbox));
+		}
 
 		/**
 		 * Set the positive button resource and it's listener

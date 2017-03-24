@@ -55,6 +55,7 @@ public class DatabaseManager {
 
     public DatabaseManager(Context context){
         this.mContext=context;
+
         databaseHelper=new DatabaseHelper(context);
         database=databaseHelper.getWritableDatabase();
     }

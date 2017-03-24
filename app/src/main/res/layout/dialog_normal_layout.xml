@@ -97,6 +97,17 @@
                 android:paddingLeft="20.0dip"
                 android:paddingRight="20.0dip"
                 android:paddingTop="15.0dip" />
+            <CheckBox
+                android:visibility="gone"
+                android:id="@+id/dialog_checkbox"
+                android:text="同时添加到云端数据库"
+                android:layout_gravity="end"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <View

@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.liang.mywifihost.R;
 
+import static android.R.attr.password;
 import static android.R.attr.start;
 import static android.os.Build.VERSION_CODES.M;
 import static com.liang.mywifihost.R.id.edit_name;
@@ -234,11 +235,15 @@ public class DefaultApName extends AppCompatActivity {
                         lin_password.setVisibility(View.VISIBLE);
                     }
 
-                    if (edit_name.getText().equals("")){
-                        btn_save.setEnabled(false);
-                    }else {
+                    if(isChecked==false && !edit_name.getText().equals("")
+                            && edit_password.getText().length()>7){
                         btn_save.setEnabled(true);
+                    }else if ( isChecked==true && !edit_name.getText().equals("")){
+                        btn_save.setEnabled(true);
+                    }else {
+                        btn_save.setEnabled(false);
                     }
+
                     break;
                 case R.id.ap_name_switch_look:
                     if(isChecked){

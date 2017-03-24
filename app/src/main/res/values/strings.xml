@@ -4,4 +4,6 @@
         则备注后的人员就会产生名单（未备注的显示手机IP）。\n\n\t\t每次查课时，需关闭WIFI热点。否则数据可能不准确。
     \n\n\t\t请注意关闭数据访问。</string>
     <string name="all_data_text">暂时没有数据\n\n可以在此界面手动添加数据，\n也可在一键查课界面，点击IP进行添加数据</string>
+
+    <string name="sf_progress_dialog_image_loading">正在加载网络数据中...</string>
 </resources>

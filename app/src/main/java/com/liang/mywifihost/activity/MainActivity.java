@@ -18,9 +18,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.BatchResult;
 import com.liang.mywifihost.R;
 import com.liang.mywifihost.adapter.DrawerListviewAdapter;
 import com.liang.mywifihost.anim.MyAnimator;
+import com.liang.mywifihost.bmob.Person;
 import com.liang.mywifihost.network.Mobile_MobManager;
 import com.liang.mywifihost.network.Wifi_APManager;
 import com.liang.mywifihost.network.Wifi_WifiManager;
@@ -28,6 +30,14 @@ import com.liang.mywifihost.sqlite.DatabaseManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobBatch;
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.QueryListListener;
+
 
 public class MainActivity extends Activity{
 
@@ -95,7 +105,7 @@ public class MainActivity extends Activity{
         myAnimator=new MyAnimator();
 
         initView();
-        inAppSetNetwork();
+
     }
 
     /**
@@ -330,35 +340,6 @@ public class MainActivity extends Activity{
                 default:break;
             }
         }
-    }
-
-    /**
-     * 进入app时要执行的网络设置
-     */
-    private void inAppSetNetwork() {
-        super.onResume();
-
-        //记录进入软件时的wifi状态
-        if (sharedPreferences.getBoolean("record_network",false))
-            wifiManager.InApp_isOpenWifi();
-
-        //如果已打开wifi热点，则关闭
-        if (apManager.isWifiApEnabled())
-            apManager.closeWifiAp();
-
-        //关闭WIFI
-        if (wifiManager.isWifiActive()) {
-            if (sharedPreferences.getBoolean("close_wifi", false))
-                wifiManager.closeWifi();
-        }
-
-        //提示关闭数据连接
-        if (sharedPreferences.getBoolean("prompt_mobile",false))
-            Toast.makeText(MainActivity.this,"记得关闭自己的数据连接哦",Toast.LENGTH_SHORT).show();
-
-        //关闭数据连接
-//        mobManager.setDataConnectionState(false);
-
     }
 
     @Override
